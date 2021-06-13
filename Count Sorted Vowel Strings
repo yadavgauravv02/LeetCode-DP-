@@ -1,0 +1,19 @@
+class Solution {
+public:
+    
+    int calc(int n, int c, vector<vector<int>> &dp) {
+        if(n==0) return 1;
+        if(dp[n][c]!=-1) return dp[n][c];
+        int x=0;
+        for(int i=1 ; i<=c ; i++) {
+            x+=calc(n-1,i,dp);
+        }
+        return dp[n][c]=x;
+    }
+    
+    int countVowelStrings(int n) {
+        vector<vector<int>> dp(n+1,vector<int> (6,-1)) ;
+        int x = calc(n,5,dp);
+        return x;
+    }
+};
